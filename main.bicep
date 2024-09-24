@@ -53,7 +53,7 @@ resource appService 'Microsoft.Web/sites@2023-12-01' = {
     reserved: true
     siteConfig: {
       numberOfWorkers: 1
-      linuxFxVersion: 'PYTHON|3.9'
+      linuxFxVersion: 'PYTHON|3.8'
       alwaysOn: true
       appCommandLine: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
       appSettings: [
