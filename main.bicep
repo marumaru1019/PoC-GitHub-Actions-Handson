@@ -19,7 +19,7 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
 }
 
 // Web App
-resource webApp 'Microsoft.Web/sites@2022-09-01' = {
+resource webApp 'Microsoft.Web/sites@2023-12-01' = {
   name: webAppName
   location: location
   kind: 'app,linux'
@@ -27,7 +27,7 @@ resource webApp 'Microsoft.Web/sites@2022-09-01' = {
     serverFarmId: appServicePlan.id
     publicNetworkAccess: enablePublicNetworkAccess ? 'Enabled' : 'Disabled'
     siteConfig: {
-      linuxFxVersion: 'PYTHON|3.11'
+      linuxFxVersion: 'PYTHON|3.9'
       appSettings: [
         {
           name: 'WEBSITE_RUN_FROM_PACKAGE'
