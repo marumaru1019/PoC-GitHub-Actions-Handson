@@ -100,6 +100,10 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
           name: 'startup.txt'
           value: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
         }
+        {
+          name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
+          value: 'true'
+        }
       ]
       appCommandLine: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
     }

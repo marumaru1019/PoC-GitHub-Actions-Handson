@@ -39,7 +39,7 @@ jobs:
           cd deployment-package
           zip -r ../app.zip .
           cd ..
-          zip -g app.zip main.py  # 必要な他のファイルも追加
+          zip -g app.zip main.py
 
       - name: Azure App Serviceへのデプロイ
         uses: azure/webapps-deploy@v2
