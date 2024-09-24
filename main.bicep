@@ -16,67 +16,9 @@ resource appServicePlan 'Microsoft.Web/serverfarms@2022-03-01' = {
     capacity: 1
   }
   properties: {
-    reserved: true // Linux を使用する場合は true
+    reserved: true
   }
 }
-
-
-// Web App
-// resource webApp 'Microsoft.Web/sites@2023-12-01' = {
-//   name: webAppName
-//   location: location
-//   kind: 'app,linux'
-//   properties: {
-//     serverFarmId: appServicePlan.id
-//     publicNetworkAccess: enablePublicNetworkAccess ? 'Enabled' : 'Disabled'
-//     siteConfig: {
-//       linuxFxVersion: 'PYTHON|3.9'
-//       appSettings: [
-//         {
-//           name: 'WEBSITE_RUN_FROM_PACKAGE'
-//           value: '1'
-//         }
-//         {
-//           name: 'PORT'
-//           value: '8000'
-//         }
-//       ]
-//       appCommandLine: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
-//     }
-//   }
-// }
-
-// resource appService 'Microsoft.Web/sites@2023-12-01' = {
-//   name: webAppName
-//   location: location
-//   kind: 'app,linux'
-//   properties: {
-//     enabled: true
-//     serverFarmId: appServicePlan.id
-//     reserved: true
-//     siteConfig: {
-//       numberOfWorkers: 1
-//       linuxFxVersion: 'PYTHON|3.9'
-//       alwaysOn: true
-//       appCommandLine: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
-//       appSettings: [
-//         {
-//           name: 'WEBSITE_RUN_FROM_PACKAGE'
-//           value: '1'
-//         }
-//         {
-//           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
-//           value: 'true'
-//         }
-//         {
-//           name: 'PORT'
-//           value: '8000'
-//         }
-//       ]
-//     }
-//     httpsOnly: true
-//   }
-// }
 
 resource webApp 'Microsoft.Web/sites@2022-03-01' = {
   name: webAppName
@@ -97,15 +39,11 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
           value: '8000'
         }
         {
-          name: 'startup.txt'
-          value: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
-        }
-        {
           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
           value: 'true'
         }
       ]
-      appCommandLine: 'uvicorn main:app --host=0.0.0.0 --port $PORT'
+      appCommandLine: 'uvicorn main:app'
     }
     httpsOnly: true
   }
