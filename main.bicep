@@ -35,7 +35,7 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
           value: 'true'
         }
       ]
-      appCommandLine: 'uvicorn main:app'
+      appCommandLine: 'python -m uvicorn main:app --host 0.0.0.0 --port 8000 --timeout-keep-alive 600'
     }
     httpsOnly: true
   }
