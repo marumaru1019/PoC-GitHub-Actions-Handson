@@ -1,4 +1,3 @@
-// main.bicep
 param location string = resourceGroup().location
 param webAppName string = 'app-actions-sample'
 param appServicePlanName string = 'ActionsAppServicePlan'
