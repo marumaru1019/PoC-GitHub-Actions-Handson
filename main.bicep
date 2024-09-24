@@ -31,14 +31,6 @@ resource webApp 'Microsoft.Web/sites@2022-03-01' = {
       linuxFxVersion: 'PYTHON|3.9'
       appSettings: [
         {
-          name: 'PORT'
-          value: '8000'
-        }
-        {
-          name: 'WEBSITES_PORT'
-          value: '8000'
-        }
-        {
           name: 'SCM_DO_BUILD_DURING_DEPLOYMENT'
           value: 'true'
         }
